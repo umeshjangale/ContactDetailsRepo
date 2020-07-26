@@ -1,0 +1,77 @@
+<section>
+  <div class="container">
+    <h4>Add/Update Contacts</h4>
+    <form id="formFields" novalidate [formGroup]="formFields" (ngSubmit)="SaveAction()">
+      <div>
+        <label>First Name</label>
+        <input type="text" class="form-control" placeholder="first name" formControlName="frmfirstname" />
+      </div>
+
+      <div>
+        <label>Last Name</label>
+        <input type="text" class="form-control" placeholder="last name" formControlName="frmlastname" />
+      </div>
+
+      <div>
+        <label>Email Id</label>
+        <input type="email" class="form-control" placeholder="enter email" formControlName="frmemail" />
+      </div>
+
+      <div>
+        <label>Phone Number</label>
+        <input type="text" class="form-control" placeholder="phone number" formControlName="frmphonenumber" />
+      </div>
+
+      <div class="col-sm-2">
+        <label>Status</label>
+        <input type="checkbox" class="form-control checkbox" formControlName="frmstatus" checked />
+      </div>
+
+      <div style="text-align:right;">
+        <button class="btn btn-info" type="button" (click)="Reset()"> Clear </button>
+        <button class="btn btn-primary" type="submit" [disabled]="formFields.invalid"> Save </button>
+      </div>
+
+    </form>
+
+  </div>
+</section>
+<hr />
+<section>
+  <div class="container">
+    <h4>Contact List</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>First Name</td>
+          <td>Last Name</td>
+          <td>Email</td>
+          <td>Phone Number</td>
+          <td>Status</td>
+          <td>Update</td>
+          <td>Delete</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let data of contactlist">
+          <td>{{data.firstName}}</td>
+          <td>{{data.lastName}}</td>
+          <td>{{data.email}}</td>
+          <td>{{data.phoneNumber}}</td>
+          <td *ngIf="data.status === true">Active</td>
+          <td *ngIf="data.status === false">InActive</td>
+          <td>
+            <div>
+              <button type="button" class="btn btn-info" (click)="Update(data.id)">Edit</button>
+            </div>
+          </td>
+          <td>
+            <div>
+              <button type="button" class="btn btn-danger" (click)="Delete(data.id)">Delete</button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

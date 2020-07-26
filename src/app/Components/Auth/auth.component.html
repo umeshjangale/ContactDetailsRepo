@@ -1,0 +1,17 @@
+<div class="container">
+  <form id="formFields" novalidate [formGroup]="formFields" (ngSubmit)="Authenticate()">
+    <div>
+      <label>User Name</label>
+      <input type="text" class="form-control" placeholder="user name" formControlName="username" />
+    </div>
+
+    <div>
+      <label>Password</label>
+      <input type="password" class="form-control" placeholder="password" formControlName="password" />
+    </div>
+
+    <div>
+      <button class="btn btn-primary" type="submit" [disabled]="formFields.invalid"> Authorize </button>
+    </div>
+  </form>
+</div>
